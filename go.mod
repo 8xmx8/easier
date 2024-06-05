@@ -27,6 +27,7 @@ require (
 	github.com/smartystreets/goconvey v1.8.1
 	github.com/spf13/cast v1.6.0
 	github.com/stretchr/testify v1.9.0
+	github.com/vmihailenco/msgpack v4.0.4+incompatible
 	github.com/xdg-go/scram v1.1.2
 	github.com/xuri/excelize/v2 v2.8.1
 	go.etcd.io/etcd/api/v3 v3.5.13
@@ -101,7 +102,6 @@ require (
 	github.com/smarty/assertions v1.16.0 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	github.com/ugorji/go/codec v1.2.12 // indirect
-	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
 	github.com/xdg-go/stringprep v1.0.4 // indirect
 	github.com/xuri/efp v0.0.0-20240408161823-9ad904a10d6d // indirect
