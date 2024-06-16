@@ -1,5 +1,14 @@
 # easier
-> 这是一个对 orm,redis,kafka,elasticsearch,亚马逊oss,stringSet,os,日志,数据转换，influxdb等封装的工具类项目
+<br>
+<p align="center">
+  <a>
+    <img src="logo.png" alt="Logo" width="180" height="180">
+  </a>
+  <h1 align="center">高度封装工具类</h1>
+  <p align="center">
+	这是一个对 orm,redis,kafka,elasticsearch,亚马逊oss,stringSet,os,日志,数据转换，influxdb,视频处理等封装的工具类项目
+</p>
+
 ## 快速开始
 ```
 go get -u github.com/8xmx8/easier
