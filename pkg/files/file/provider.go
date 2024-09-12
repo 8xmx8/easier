@@ -3,7 +3,6 @@ package file
 import (
 	"context"
 	"fmt"
-	"github.com/8xmx8/easier/pkg/files/video"
 	"io"
 )
 
@@ -19,7 +18,7 @@ type storageProvider interface {
 type PutObjectOutput struct{}
 
 func init() {
-	switch video.StorageType { // Append more type here to provide more file action ability
+	switch StorageType { // Append more type here to provide more file action ability
 	case "fs":
 		client = FSStorage{}
 	}
