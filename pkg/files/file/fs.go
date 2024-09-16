@@ -12,7 +12,7 @@ import (
 
 const (
 	StorageType     = "fs"
-	SystemStartPath = "./tmp"
+	SystemStartPath = "/tmp"
 	SystemBaseUrl   = "http://localhost/"
 )
 

@@ -26,6 +26,7 @@ require (
 	github.com/olivere/elastic/v7 v7.0.32
 	github.com/panjf2000/ants/v2 v2.9.1
 	github.com/robfig/cron/v3 v3.0.1
+	github.com/sirupsen/logrus v1.8.1
 	github.com/smartystreets/goconvey v1.8.1
 	github.com/spf13/cast v1.6.0
 	github.com/stretchr/testify v1.9.0

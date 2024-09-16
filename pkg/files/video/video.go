@@ -7,14 +7,14 @@ import (
 )
 
 // GenerateRawVideoName 生成初始视频名称，此链接仅用于内部使用，暴露给用户的视频名称
-func GenerateRawVideoName(actorId uint32, title string, videoId uint32) string {
-	hash := sha256.Sum256([]byte("RAW" + strconv.FormatUint(uint64(actorId), 10) + title + strconv.FormatUint(uint64(videoId), 10)))
+func GenerateRawVideoName(actorId int64, title string, videoId int64) string {
+	hash := sha256.Sum256([]byte("RAW" + strconv.FormatInt(actorId, 10) + title + strconv.FormatInt(videoId, 10)))
 	return hex.EncodeToString(hash[:]) + ".mp4"
 }
 
 // GenerateFinalVideoName 最终暴露给用户的视频名称
-func GenerateFinalVideoName(actorId uint32, title string, videoId uint32) string {
-	hash := sha256.Sum256([]byte(strconv.FormatUint(uint64(actorId), 10) + title + strconv.FormatUint(uint64(videoId), 10)))
+func GenerateFinalVideoName(actorId int64, title string, videoId int64) string {
+	hash := sha256.Sum256([]byte(strconv.FormatInt(actorId, 10) + title + strconv.FormatInt(videoId, 10)))
 	return hex.EncodeToString(hash[:]) + ".mp4"
 }
 

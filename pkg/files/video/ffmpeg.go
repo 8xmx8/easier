@@ -9,10 +9,11 @@ import (
 	"image/color"
 	"image/draw"
 	"image/png"
+	"os/exec"
 )
 
 // TextWatermark 获取视频水印,fontFile为字体文件,水印的字体格式
-// 短视频格式 fontSize: 40,imgW: 800,imgH: 60,textX: 10,textY: 50,DPI: 72
+// [视频左上方] 短视频格式 fontSize: 40,imgW: 800,imgH: 60,textX: 10,textY: 50,DPI: 72
 func TextWatermark(ctx context.Context, fontFile, text string,
 	fontSize, imgW, imgH, textX, textY int, DPI float64, actorId int64) (string, error) {
 	f, err := file.ParseFont(fontFile)
@@ -52,4 +53,31 @@ func TextWatermark(ctx context.Context, fontFile, text string,
 		return "", err
 	}
 	return WatermarkPNGName, nil
+}
+
+// AddWatermarkToVideo 添加水印逻辑
+func AddWatermarkToVideo(ctx context.Context, WatermarkPNGName, videoTitle, videoRawFileName string, videoId, actorId int64) error {
+	FinalFileName := GenerateFinalVideoName(actorId, videoTitle, videoId)
+	RawFilePath := file.GetLocalPath(ctx, videoRawFileName)
+	WatermarkPath := file.GetLocalPath(ctx, WatermarkPNGName)
+	cmdArgs := []string{
+		"-i", RawFilePath,
+		"-i", WatermarkPath,
+		"-filter_complex", "[0:v][1:v]overlay=10:10",
+		"-f", "matroska", "-",
+	}
+	cmd := exec.Command("ffmpeg", cmdArgs...)
+	var buf bytes.Buffer
+	cmd.Stdout = &buf
+	// Execute the command
+	err := cmd.Run()
+	if err != nil {
+		return err
+	}
+	// Write the captured stdout to a file
+	_, err = file.Upload(ctx, FinalFileName, bytes.NewReader(buf.Bytes()))
+	if err != nil {
+		return err
+	}
+	return nil
 }
