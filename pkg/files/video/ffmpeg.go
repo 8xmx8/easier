@@ -81,3 +81,25 @@ func AddWatermarkToVideo(ctx context.Context, WatermarkPNGName, videoTitle, vide
 	}
 	return nil
 }
+
+// ExtractVideoCover 提取视频封面
+func ExtractVideoCover(ctx context.Context, rawFileName, coverFileName string) error {
+	RawFilePath := file.GetLocalPath(ctx, rawFileName)
+	cmdArgs := []string{
+		"-i", RawFilePath, "-vframes", "1", "-an", "-f", "image2pipe", "-",
+	}
+	cmd := exec.Command("ffmpeg", cmdArgs...)
+	// Create a bytes.Buffer to capture stdout
+	var buf bytes.Buffer
+	cmd.Stdout = &buf
+	err := cmd.Run()
+	if err != nil {
+		return err
+	}
+	// buf.Bytes() now contains the image data. You can use it to write to a file or send it to an output stream.
+	_, err = file.Upload(ctx, coverFileName, bytes.NewReader(buf.Bytes()))
+	if err != nil {
+		return err
+	}
+	return nil
+}

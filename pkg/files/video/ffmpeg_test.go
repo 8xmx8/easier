@@ -25,13 +25,16 @@ func TestAddWatermarkToVideo(t *testing.T) {
 	reader := bytes.NewReader(data)
 
 	fileName := GenerateRawVideoName(actorId, title, videoId)
+	coverName := GenerateCoverName(actorId, title, videoId)
 	_, err := file.Upload(ctx, fileName, reader)
+
+	err = ExtractVideoCover(ctx, fileName, coverName)
+	assert.NoError(t, err)
 
 	watermark, err := TextWatermark(ctx,
 		"font.ttf", "小杨", 40,
 		800, 60, 10, 50, 72, actorId)
 	assert.NoError(t, err)
-
 	err = AddWatermarkToVideo(ctx, watermark, title, fileName, videoId, actorId)
 	assert.NoError(t, err)
 }
