@@ -18,29 +18,14 @@ func TestCreateIndex(t *testing.T) {
 	ctx := context.Background()
 	es, err := NewElastic(ctx, &Config{Addrs: addrs, User: user, Pwd: passwd})
 	assert.NoError(t, err)
-	mapping := map[string]interface{}{
-		"properties": map[string]interface{}{
-			"ip": map[string]interface{}{
-				"type":  "ip",
-				"store": true,
-			},
-			"port": map[string]interface{}{
-				"type": "long",
-			},
-			"lastupdatetime": map[string]interface{}{
-				"format": "YYYY-MM-dd HH:mm:ss",
-				"type":   "date",
-			},
-		},
-	}
-	assert.NoError(t, es.CreateIndex(ctx, testIndex, mapping))
+	assert.NoError(t, es.CreateIndex(ctx, "wa_wa1c_eywzfx_db_t_ads_eywz_bpp", LoadMapping("wa_wa1c_eywzfx_db_t_ads_eywz_bpp.json")))
 }
 
 func TestDeleteIndex(t *testing.T) {
 	ctx := context.Background()
 	es, err := NewElastic(ctx, &Config{Addrs: addrs})
 	assert.NoError(t, err)
-	assert.NoError(t, es.DeleteIndex(ctx, testIndex))
+	assert.NoError(t, es.DeleteIndex(ctx, "wa_wa1c_eywzfx_db_t_ads_eywz_bpp"))
 }
 
 func TestUpdateMappingByReIndex(t *testing.T) {
