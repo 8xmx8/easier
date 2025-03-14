@@ -9,9 +9,9 @@ import (
 
 var (
 	testIndex = "test_data_sl"
-	addrs     = []string{"http://10.11.12.35:9200"}
-	user      = "elastic"
-	passwd    = "admin123"
+	addrs     = []string{"http://0.0.0.0:9200"}
+	user      = ""
+	passwd    = ""
 )
 
 func TestCreateIndex(t *testing.T) {

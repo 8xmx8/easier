@@ -2,6 +2,8 @@ package es
 
 import (
 	"context"
+	"embed"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"net/http"
@@ -10,6 +12,21 @@ import (
 	"github.com/8xmx8/easier/pkg/logger"
 	"github.com/olivere/elastic/v7"
 )
+
+var Mapping embed.FS
+
+func LoadMapping(filename string) map[string]interface{} {
+	mapping := map[string]interface{}{}
+	bytes, err := Mapping.ReadFile(filename)
+	if err != nil {
+		return mapping
+	}
+	err = json.Unmarshal(bytes, &mapping)
+	if err != nil {
+		return mapping
+	}
+	return mapping
+}
 
 // CreateDoc 创建一个文档
 func (e *Elastic) CreateDoc(ctx context.Context, index string, data interface{}) error {
