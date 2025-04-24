@@ -1,0 +1,375 @@
+{
+  "properties": {
+    "admin_account": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "admin_pwd": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_dest_ipv4": {
+      "type": "ip"
+    },
+    "c_dest_ipv6": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_dest_port": {
+      "type": "integer"
+    },
+    "c_ip": {
+      "type": "ip"
+    },
+    "c_protocol": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_src_ipv4": {
+      "type": "ip"
+    },
+    "c_src_ipv6": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_src_port": {
+      "type": "integer"
+    },
+    "case_number": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "customer_alipay": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "customer_bankcard": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "customer_email": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "customer_name": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "customer_phone": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "customer_qq": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "customer_wechat": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "daili_accout": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "daili_alipay": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "daili_card": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "daili_email": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "daili_name": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "daili_phone": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "daili_pwd": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "daili_qq": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "daili_wechat": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "dark_id": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "dark_type": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "day": {
+      "type": "integer"
+    },
+    "deblock_ip": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "discovery_time": {
+      "type": "date",
+      "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+    },
+    "domain": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "event_id": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "fraud_bankcard": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "fraud_email": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "fraud_info": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "fraud_name": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "fraud_phone": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "fraud_qq": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "fraud_wechat": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "host": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "hour": {
+      "type": "integer"
+    },
+    "malware_downloads_link": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "month": {
+      "type": "integer"
+    },
+    "operator_action": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "operator_role": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "unique_id": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "update_time": {
+      "type": "date",
+      "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis"
+    },
+    "url": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_account": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_address": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_age": {
+      "type": "integer",
+      "null_value": null
+    },
+    "victim_alipay": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_alipay_pwd": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_apple_id": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_bankcard": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_bankcard_pwd": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_company_address": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_company_info": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_email": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_gender": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_idcard": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_idcard_photo": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_kinsfolk_name": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_kinsfolk_phone": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_loan_amount": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_name": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_outlook": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_phone": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_pwd": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_qq": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_social_name": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_social_phone": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_thirdparty_name": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_thirdparty_phone": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_tricked_amount": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "victim_wechat": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "web_homepage": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "year": {
+      "type": "integer"
+    },
+    "c_src_ipv4_country": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_src_ipv4_province": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_src_ipv4_city": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_src_ipv6_country": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_src_ipv6_province": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_src_ipv6_city": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_dest_ipv4_country": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_dest_ipv4_province": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_dest_ipv4_city": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_dest_ipv6_country": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_dest_ipv6_province": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_dest_ipv6_city": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_imsi": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_imei": {
+      "type": "keyword",
+      "null_value": null
+    },
+    "c_cookie": {
+      "type": "keyword",
+      "null_value": null
+    }
+  }
+}

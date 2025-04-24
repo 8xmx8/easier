@@ -13,6 +13,7 @@ import (
 	"github.com/olivere/elastic/v7"
 )
 
+//go:embed mapping
 var Mapping embed.FS
 
 func LoadMapping(filename string) map[string]interface{} {
