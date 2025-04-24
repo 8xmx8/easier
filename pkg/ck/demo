@@ -1,0 +1,44 @@
+// CreateMaterializedView 创建物化视图
+func  CreateMaterializedView(view, source, target string) string {
+ 	sql := `CREATE MATERIALIZED VIEW IF NOT EXISTS ` + view + ` TO ` + target + `
+ AS
+ SELECT
+     user_id,
+ 	parent_id,
+     user_name,
+ 	user_group,
+     sumState(day_total_deposit) AS total_deposit,
+     sumState(day_total_withdraw) AS total_withdraw,
+     sumState(day_net_deposit) AS net_deposit,
+     sumState(day_trade_count) AS trade_count,
+ 	sumState(day_trade_volume) AS trade_volume,
+ 	sumState(day_trade_amount) AS trade_amount,
+     sumState(day_income) AS income,
+     sumState(day_expenditure) AS expenditure,
+     sumState(day_profit) AS profit,
+     sumState(day_loss) AS loss
+ FROM ` + source + `
+ GROUP BY user_id, parent_id, user_name, user_group;`
+ 	return sql
+ }
+
+// CREATE_TABLE_UserSummary 创建用户汇总表 目标表
+const CREATE_TABLE_UserSummary = `CREATE TABLE IF NOT EXISTS user_summary
+(
+    user_id Int64 COMMENT '用户id',
+    user_name String COMMENT '用户名',
+    user_group String COMMENT '用户组别',
+	parent_id Int64 COMMENT '上级id',
+    total_deposit AggregateFunction(sum, Float64) COMMENT '总入金',
+    total_withdraw AggregateFunction(sum, Float64) COMMENT '总出金',
+    net_deposit AggregateFunction(sum, Float64) COMMENT '净入金',
+    trade_count AggregateFunction(sum, Float64) COMMENT '交易手数',
+    trade_volume AggregateFunction(sum, Float64) COMMENT '交易量',
+    trade_amount AggregateFunction(sum, Float64) COMMENT '交易金额',
+    income AggregateFunction(sum, Float64) COMMENT '收入',
+    expenditure AggregateFunction(sum, Float64) COMMENT '支出',
+    profit AggregateFunction(sum, Float64) COMMENT '盈利',
+    loss AggregateFunction(sum, Float64) COMMENT '亏损'
+) ENGINE = AggregatingMergeTree()
+ORDER BY (user_id, parent_id, user_name, user_group)
+partition by (user_id)`
