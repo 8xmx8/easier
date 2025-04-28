@@ -106,6 +106,25 @@ func (ep *ExcelParser) WriteRow(ctx context.Context, sheet string, row int, data
 	return nil
 }
 
+// WriteRows 写入数据到指定的工作表
+func (ep *ExcelParser) WriteRows(ctx context.Context, sheet string, startRow int, data [][]interface{}) error {
+	ep.mu.Lock()         // 加锁
+	defer ep.mu.Unlock() // 解锁（在函数返回时）
+	for _, rowData := range data {
+		for col, value := range rowData {
+			cell, err := excelize.CoordinatesToCellName(col+1, startRow)
+			if err != nil {
+				return err
+			}
+			if err := ep.excelize.SetCellValue(sheet, cell, value); err != nil {
+				return err
+			}
+		}
+		startRow++
+	}
+	return nil
+}
+
 // AsyncReadAllRows 异步读取指定sheet的所有数据
 func (ep *ExcelParser) AsyncReadAllRows(ctx context.Context, sheet string) (<-chan []string, error) {
 	rows, err := ep.excelize.Rows(sheet)
